@@ -9,7 +9,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
-  entry: './app/index.js',
+  entry: './app/index.jsx',
   output: {
     path: path.resolve('dist'),
     filename: 'index_bundle.js',
@@ -19,23 +19,31 @@ module.exports = {
       {
         test: /\.js$/,
         use: [
-          { loader: "babel-loader" }
+          { loader: 'eslint-loader' },
+        ],
+        exclude: /node_modules/,
+        enforce: 'pre',
+      },
+      {
+        test: /\.js$/,
+        use: [
+          { loader: 'babel-loader' },
         ],
         exclude: /node_modules/,
       },
       {
         test: /\.jsx$/,
         use: [
-          { loader: "babel-loader" }
+          { loader: 'babel-loader' },
         ],
         exclude: /node_modules/,
       },
-    ]
+    ],
   },
   plugins: [
     HtmlWebpackPluginConfig,
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
-  }
+  },
 };
