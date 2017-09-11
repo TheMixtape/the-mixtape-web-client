@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import postReducer from './post/reducer';
+import trackForm from './TrackForm/reducer';
 
 export default combineReducers({
-  posts: postReducer,
+  trackForm,
 });
