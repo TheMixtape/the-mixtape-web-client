@@ -47,5 +47,8 @@
     "html-webpack-plugin": "^2.30.1",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
+  },
+  "engines": {
+    "node": "^8.2.1"
   }
 }
