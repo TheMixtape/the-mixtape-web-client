@@ -1,0 +1,28 @@
+# Test against this version of Node.js
+environment:
+  matrix:
+  # node.js
+  - nodejs_version: "8"
+
+# Install scripts (runs after repo cloning)
+install:
+  # Get the latest stable version of Node.js or io.js
+  - ps: Install-Product node $env:nodejs_version
+  # Install modules
+  - npm install
+
+# Post-install test scripts.
+test_script:
+  # Output useful info for debugging.
+  - node --version
+  - npm --version
+  # run tests
+  - npm test
+
+# Don't actually build.
+build: off
+
+notifications:
+  - provider: Slack
+    incoming_webhook:
+      secure: gs3lkLJo0rWsWq0+9Lb69EvrdM80x8DXEGjm5e6jCCV2E1VhvhDC5FwReNm5AGUuvtY9kfKSC/KMc2dZqpxPTgViiVkqZB0mtz7uW/JOwdE=
